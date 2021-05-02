@@ -7,14 +7,13 @@ class ApplicationController < ActionController::API
   before_action :doorkeeper_authorize!
   respond_to :json
 
-  respond_to :json  
   # Needed for Cancan ControllerAdditions
   include ActionController::Helpers
   # We need to make sure all resources are authorized with CanCan
-  include CanCan::ControllerAdditions
-  check_authorization unless: :devise_controller?
+  # include CanCan::ControllerAdditions
+  # check_authorization unless: :devise_controller?
 
-  rescue_from CanCan::AccessDenied, with: :forbidden_error
+  # rescue_from CanCan::AccessDenied, with: :forbidden_error
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_error
   def render_resource(resource, no_content: false)
     if resource.errors.empty?

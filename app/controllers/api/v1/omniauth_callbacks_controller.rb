@@ -8,10 +8,10 @@ class Api::V1::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       create_token = Doorkeeper::AccessToken.create!(
         application_id: nil,
         resource_owner_id: user.id,
-        expires_in: 2.hours,
+        expires_in: nil,
         scopes: 'public'
       )
-      redirect(ENV['APP_DOMAIN'] + ENV['FRONTEND_TOKEN'] + "?token=#{create_token.token}")
+      redirect_to(ENV['APP_DOMAIN'] + ENV['FRONTEND_TOKEN'] + "?token=#{create_token.token}")
       # sign_in_and_redirect(user)
     else
       session["devise.user_attributes"] = user.attributes

@@ -21,6 +21,10 @@ class Authorization < ApplicationRecord
 
 	end
 
+	def fetch_details_from_instagram
+
+	end
+
 
 	def fetch_details_from_github
 	end

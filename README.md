@@ -1,24 +1,26 @@
-# README
+This is Ruby on rails API for endorsement
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version:
+```
+ruby 2.3.3
+```
 
-Things you may want to cover:
+This app using database mysql. 
 
-* Ruby version
 
-* System dependencies
+First time run:
+```
+rake db:create
+rake db:migrate
+```
 
-* Configuration
+Then run server:
+```
+rails s
+```
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Front end side:
+```
+https://github.com/dugdodotcom/viral-ad-dashboard
+```

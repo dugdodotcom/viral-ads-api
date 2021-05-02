@@ -32,5 +32,6 @@ module SvEcommerce
     # For including folder of services
     config.autoload_paths << Rails.root.join('app', 'services')
     config.autoload_paths << Rails.root.join('lib')
+    
   end
 end

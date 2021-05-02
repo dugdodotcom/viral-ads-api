@@ -11,7 +11,14 @@ class User < ApplicationRecord
            class_name: 'Doorkeeper::AccessToken',
            foreign_key: :resource_owner_id,
            dependent: :delete_all # or :destroy if you need callbacks
-  
+
+  has_many :links, dependent: :destroy
+  accepts_nested_attributes_for :links, allow_destroy: true
+  has_many :products
+  has_one :webpage
+  has_and_belongs_to_many :goods, class_name: "Product"
+  has_many :products_users
+
   devise :database_authenticatable, 
     :registerable,
     :recoverable, 

@@ -21,6 +21,8 @@ Doorkeeper.configure do
       User.where(email: auth.info.email).first if auth
     else
       user = User.find_for_database_authentication(email: params[:email])
+      puts "-----test" 
+      puts user.valid_password?(params[:password])
       if user&.valid_for_authentication? { user.valid_password?(params[:password]) } && user&.active_for_authentication?
         request.env['warden'].set_user(user, scope: :user, store: false)
         user
@@ -64,7 +66,7 @@ Doorkeeper.configure do
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
   #
-  # access_token_expires_in 2.hours
+  access_token_expires_in nil
 
   # Assign custom TTL for access tokens. Will be used instead of access_token_expires_in
   # option if defined. `context` has the following properties available
@@ -125,7 +127,7 @@ Doorkeeper.configure do
   # For more information go to
   # https://github.com/doorkeeper-gem/doorkeeper/wiki/Using-Scopes
   #
-  default_scopes  :read
+  default_scopes  :public
   optional_scopes :write, :update
 
   # Change the way client credentials are retrieved from the request object.
